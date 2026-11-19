@@ -1,0 +1,11 @@
+services:
+  bank-balance-tracking:
+    build: .
+    container_name: bank-balance-tracking
+    ports:
+      # Bind to localhost by default to avoid exposing the unauthenticated trigger on all interfaces.
+      # Change to "8000:8000" or place behind an authenticated/restricted proxy for remote access.
+      - "127.0.0.1:8000:8000"
+    env_file:
+      - .env
+    restart: unless-stopped
